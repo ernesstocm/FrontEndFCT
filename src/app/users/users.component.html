@@ -1,0 +1,100 @@
+
+<div class="container">
+    <h1 class="center">PANEL DE ADMINISTRADOR</h1>
+
+</div>
+<h2>Usuarios Activos</h2>
+<table>
+    <tr>
+        <th>id</th>
+        <th>Nick</th>
+        <th>Contraseña</th>
+        <th>Telefono</th>
+        <th>correo_electronico</th>
+        <th>Rol</th>
+        <th>Imagen</th>
+    </tr>
+    <tr *ngFor="let user of usersActives">
+        <td>{{user.id}}</td>
+        <td>{{user.nick}}</td>
+        <td>{{user.password}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.role}}</td>
+        <td>{{user.urlImage}}</td>
+        <td>
+            <button (click)="deleteUser(user)">Eliminar</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h2>Usuarios Eliminados</h2>
+<table>
+    <tr>
+        <th>id</th>
+        <th>Nick</th>
+        <th>Contraseña</th>
+        <th>Telefono</th>
+        <th>correo_electronico</th>
+        <th>Rol</th>
+        <th>Imagen</th>
+    </tr>
+    <tr *ngFor="let user of usersDeleted">
+        <td>{{user.id}}</td>
+        <td>{{user.nick}}</td>
+        <td>{{user.password}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.role}}</td>
+        <td>{{user.urlImage}}</td>
+        <td>
+            <button (click)="deleteUser(user)">Activar</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h2>Creación de usuarios</h2>
+<table>
+    <tr>
+        <th>Nick</th>
+        <th>Contraseña</th>
+        <th>Telefono</th>
+        <th>correo_electronico</th>
+        <th>Rol</th>
+        <th>Imagen</th>
+    </tr>
+    <tr>
+
+        <td>
+            <!-- <label>Nick</label> -->
+            <input [(ngModel)]="newUser.nick" type="text"/>
+        </td>
+        <td>
+            <!-- <label>email</label> -->
+            <input type="email" [(ngModel)]="newUser.email">
+        </td>
+        <td>
+            <!-- <label>contraseña</label> -->
+            <input type="text" [(ngModel)]="newUser.password">
+        </td>
+        <td>
+            <!-- <label>Teléfono</label> -->
+            <input type="text" [(ngModel)]="newUser.phone">
+        </td>
+        <td>
+            <!-- <label>Rol</label> -->
+            <select [(ngModel)]="newUser.role">
+                <option value="role_superAdmin">superAdmin
+                <option value="role_user">User
+                <option value="role_administration">Administrador
+            </select>
+        </td>
+        <td>
+            <!-- <label>Imagen de avatar</label> -->
+            <input type="text" [(ngModel)]="newUser.urlImage">
+        </td>
+        <td>
+            <button (click)="createUser()">Crear</button>
+        </td>
+    </tr>
+</table>
