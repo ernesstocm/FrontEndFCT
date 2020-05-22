@@ -1,4 +1,4 @@
-import { updateUser, createUser, } from './../../graphql/user/mutations/mutations';
+import { createUser, } from './../../graphql/user/mutations/mutations';
 import { UpdateUserInput } from './../models/objects/user/updateUserInput';
 import { getAllUsers, getAllUsersDeleted } from '../../graphql/user/queries/queries';
 import { Apollo } from 'apollo-angular';
@@ -35,18 +35,6 @@ export class UserService {
             }));
     }
 
-    updateUser$(UpdateUserInput: UpdateUserInput) {
-        return this.apollo
-            .mutate({
-                mutation: updateUser,
-                variables: {
-                    UpdateUserInput
-                }
-            }).pipe(map(result => {
-                return Boolean;
-            }));
-    }
-
     createUser$(createUserInputDto: CreateUserInputDto) {
         return this.apollo
             .mutate({
@@ -55,7 +43,7 @@ export class UserService {
                     createUserInputDto
                 }
             }).pipe(map(result => {
-                console.log(result)
+                // console.log(result)
                 return result.data['createUser'];
             }));
     }

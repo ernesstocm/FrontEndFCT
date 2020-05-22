@@ -7,11 +7,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { UsersComponent } from './users/users.component';
 import { ApolloModule } from 'apollo-angular';
 import { FormsModule } from '@angular/forms';
+import { TaskComponent } from './task/task.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UsersComponent
+    UsersComponent,
+    TaskComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +23,7 @@ import { FormsModule } from '@angular/forms';
     GraphQLModule,
     HttpClientModule,
     ApolloModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

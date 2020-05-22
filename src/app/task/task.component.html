@@ -1,0 +1,46 @@
+<h1>Panel de administración Tareas</h1>
+<h2 class="center">Creación de tareas</h2>
+<table>
+    <tr>
+        <th>Nombre de la tarea</th>
+        <th>Description de la tarea</th>
+        <th>Fecha de inicio</th>
+        <th>Fecha de fin</th>
+        <th>Estado</th>
+        <th>Responsable</th>
+    </tr>
+    <tr>
+
+        <td>
+            <!-- <label>contraseña</label> -->
+            <input type="text" [(ngModel)]="newTask.name">
+        </td>
+        <td>
+            <!-- <label>Teléfono</label> -->
+            <input class="estilotextarea" [(ngModel)]="newTask.description">
+        </td>
+        <td>
+            <!-- <label>Nick</label> -->
+            <input [(ngModel)]="newTask.startDate" type="date"/>
+        </td>
+        <td>
+            <!-- <label>email</label> -->
+            <input type="date" [(ngModel)]="newTask.endDate">
+        </td>
+        <td>
+            <!-- <label>Rol</label> -->
+            <select [(ngModel)]="newTask.state">
+                <option value="pending">pendiente
+                <option value="in_progress">En progreso
+            </select>
+        </td>
+        <td>
+            <select [(ngModel)]="newTask.userResponsibleId">
+                <option *ngFor="let user of usersActives" [(value)]="user.id" >{{user.nick}}
+            </select>
+        </td>
+        <td>
+            <button (click)="createTask()">Crear</button>
+        </td>
+    </tr>
+</table>

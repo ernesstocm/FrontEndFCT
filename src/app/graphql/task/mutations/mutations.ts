@@ -5,9 +5,9 @@ import gql from 'graphql-tag';
 // 		updateUser(updateUserInput: $updateUserInput)
 // 	}
 // `;
-export const createUser = gql`
-	mutation createUser($createUserInputDto: CreateUserInputDto) {
-		createUser(createUserInputDto: $createUserInputDto){
+export const createTask = gql`
+	mutation createTask($createTaskInputDto: CreateTaskInputDto) {
+		createTask(createTaskInputDto: $createTaskInputDto){
 			result
 		}
 	}

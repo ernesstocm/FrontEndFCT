@@ -41,9 +41,9 @@ export class UsersComponent implements OnInit {
         });
     }
 
-    updateUser(updateUser: UpdateUserInput) {
-        this.userService.updateUser$(updateUser).subscribe();
-    }
+    // updateUser(updateUser: UpdateUserInput) {
+    //     this.userService.updateUser$(updateUser).subscribe();
+    // }
 
     createUser() {
         console.log(this.newUser)
