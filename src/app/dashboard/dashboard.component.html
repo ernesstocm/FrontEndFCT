@@ -1,0 +1,63 @@
+<app-nav-bar></app-nav-bar>
+
+<h1><span class="blue">&lt;</span>Vista de<span class="blue">&gt;</span> <span class="yellow">Tareas</span></h1>
+
+<br>
+<div *ngIf="error">
+    <br>
+    <br>
+    <br>
+    <h3 >{{error}}</h3>
+</div>
+<table class="container" *ngFor="let task of tasks">
+    <thead>
+        <tr>
+            <th>{{task.name}}</th>
+            <th>Desde: {{task.startDate |  date:'dd/MM/yyyy'}}</th>
+            <th>Hasta: {{task.endDate |  date:'dd/MM/yyyy'}}</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <tr>
+            <td colspan="3" class="description">
+                {{task.description}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{task.state}}
+            </td>
+            <td colspan="2">
+                <select [(ngModel)]="newState">
+                    <option value="pending">Pendiente
+                    <option value="in_progress">En progreso
+                    <option value="paused">Pausada
+                    <option value="cancelled">Cancelada
+                </select>
+            </td>
+        </tr>
+        <!-- <tr>
+            <td colspan="3">
+            </td>
+            
+        </tr> -->
+
+        <tr>
+            <td>
+                <button (click)="prevPage()"  class="btn btn-primary btn-block btn-large">Anterior</button>
+
+            </td>
+            <td>
+                <button  class="btn btn-success btn-block btn-large" (click)="saveStateTask(task)">Guardar</button>
+
+            </td>
+            <td>
+                <button (click)="nextPage()"  class="btn btn-primary btn-block btn-large">Siguiente</button>
+
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+<br>

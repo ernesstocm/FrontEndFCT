@@ -12,3 +12,10 @@ export const createTask = gql`
 		}
 	}
 `;
+export const updateTask = gql`
+	mutation updateTask($updateTaskInputDto: UpdateTaskInputDto) {
+		updateTask(updateTaskInputDto: $updateTaskInputDto){
+			result
+		}
+	}
+`;

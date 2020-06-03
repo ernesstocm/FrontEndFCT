@@ -1,0 +1,19 @@
+nav >  a{
+    color: white !important;
+}
+li> a{
+    color: white;
+}
+.dropMenu{
+    background: rgba(0, 0, 0, 0.3);
+    a{
+        color: white !important;
+    }
+    a:hover{
+        color: gray !important;
+        background: transparent !important;
+    }
+}
+nav{
+    background: transparent !important;
+}

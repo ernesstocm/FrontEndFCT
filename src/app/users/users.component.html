@@ -1,100 +1,130 @@
+<app-nav-bar></app-nav-bar>
 
-<div class="container">
-    <h1 class="center">PANEL DE ADMINISTRADOR</h1>
+<h1>
+    <span class="blue">&lt;</span>Visualización de<span class="blue">&gt;</span> <span class="yellow">Usuarios</span>
+</h1>
+<br>
 
-</div>
-<h2>Usuarios Activos</h2>
-<table>
-    <tr>
-        <th>id</th>
-        <th>Nick</th>
-        <th>Contraseña</th>
-        <th>Telefono</th>
-        <th>correo_electronico</th>
-        <th>Rol</th>
-        <th>Imagen</th>
-    </tr>
-    <tr *ngFor="let user of usersActives">
-        <td>{{user.id}}</td>
-        <td>{{user.nick}}</td>
-        <td>{{user.password}}</td>
-        <td>{{user.phone}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.role}}</td>
-        <td>{{user.urlImage}}</td>
-        <td>
-            <button (click)="deleteUser(user)">Eliminar</button>
-        </td>
-    </tr>
+<table class="container">
+    <thead>
+        <tr>
+            <th>
+                <h1>Nick</h1>
+            </th>
+            <!-- <th>
+                <h1>Contraseña</h1>
+            </th> -->
+            <th>
+                <h1>Telefono</h1>
+            </th>
+            <th>
+                <h1>correo_electronico</h1>
+            </th>
+            <th>
+                <h1>Rol</h1>
+            </th>
+            <th>
+                <h1>Imagen</h1>
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <!-- <td>{{user.id}}</td> -->
+            <td>{{user.nick}}</td>
+            <!-- <td>{{user.password}}</td> -->
+            <td>{{user.phone}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.role}}</td>
+            <td>{{user.urlImage}}</td>
+            <td>
+                <button (click)="deleteUser(user)" class="btn btn-primary btn-block btn-large" *ngIf="user.deleted === 'false'">Eliminar</button>
+                <button (click)="activeUser(user)" class="btn btn-primary btn-block btn-large" *ngIf="user.deleted === 'true'">Activar</button>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button (click)="prevPage()"  class="btn btn-primary btn-block btn-large">Anterior</button>
+
+            </td>
+            <td colspan="4">
+                <button (click)="refresh()"  class="btn btn-primary btn-block btn-large">Actualizar</button>
+            </td>
+            <td>
+                <button (click)="nextPage()"  class="btn btn-primary btn-block btn-large">Siguiente</button>
+
+            </td>
+
+        </tr>
+
+
+    </tbody>
 </table>
 <br>
-<h2>Usuarios Eliminados</h2>
-<table>
-    <tr>
-        <th>id</th>
-        <th>Nick</th>
-        <th>Contraseña</th>
-        <th>Telefono</th>
-        <th>correo_electronico</th>
-        <th>Rol</th>
-        <th>Imagen</th>
-    </tr>
-    <tr *ngFor="let user of usersDeleted">
-        <td>{{user.id}}</td>
-        <td>{{user.nick}}</td>
-        <td>{{user.password}}</td>
-        <td>{{user.phone}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.role}}</td>
-        <td>{{user.urlImage}}</td>
-        <td>
-            <button (click)="deleteUser(user)">Activar</button>
-        </td>
-    </tr>
-</table>
-<br>
-<h2>Creación de usuarios</h2>
-<table>
-    <tr>
-        <th>Nick</th>
-        <th>Contraseña</th>
-        <th>Telefono</th>
-        <th>correo_electronico</th>
-        <th>Rol</th>
-        <th>Imagen</th>
-    </tr>
-    <tr>
 
-        <td>
-            <!-- <label>Nick</label> -->
-            <input [(ngModel)]="newUser.nick" type="text"/>
-        </td>
-        <td>
-            <!-- <label>email</label> -->
-            <input type="email" [(ngModel)]="newUser.email">
-        </td>
-        <td>
-            <!-- <label>contraseña</label> -->
-            <input type="text" [(ngModel)]="newUser.password">
-        </td>
-        <td>
-            <!-- <label>Teléfono</label> -->
-            <input type="text" [(ngModel)]="newUser.phone">
-        </td>
-        <td>
-            <!-- <label>Rol</label> -->
-            <select [(ngModel)]="newUser.role">
-                <option value="role_superAdmin">superAdmin
-                <option value="role_user">User
-                <option value="role_administration">Administrador
-            </select>
-        </td>
-        <td>
-            <!-- <label>Imagen de avatar</label> -->
-            <input type="text" [(ngModel)]="newUser.urlImage">
-        </td>
-        <td>
-            <button (click)="createUser()">Crear</button>
-        </td>
-    </tr>
+
+<h1><span class="blue">&lt;</span>Creación de<span class="blue">&gt;</span> <span class="yellow">Usuarios</span></h1>
+<br>
+
+<table class="container">
+    <thead>
+        <tr>
+            <th>
+                <h1>Nick</h1>
+            </th>
+            <th>
+                <h1>Contraseña</h1>
+            </th>
+            <th>
+                <h1>Telefono</h1>
+            </th>
+            <th>
+                <h1>correo_electronico</h1>
+            </th>
+            <th>
+                <h1>Rol</h1>
+            </th>
+            <th>
+                <h1>Imagen</h1>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+
+            <td>
+                <input [(ngModel)]="newUser.nick" type="text" />
+            </td>
+
+            <td>
+                <input type="email" [(ngModel)]="newUser.email">
+            </td>
+            <td>
+                <input type="text" [(ngModel)]="newUser.password">
+            </td>
+            <td>
+                <input type="text" [(ngModel)]="newUser.phone">
+            </td>
+            <td>
+                <select [(ngModel)]="newUser.role">
+                    <option value="role_superAdmin">superAdmin
+                    <option value="role_user">User
+                    <option value="role_administration">Administrador
+                </select>
+            </td>
+            <td>
+                <input type="text" [(ngModel)]="newUser.urlImage">
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="6"> <button (click)="createTask()" class="btn btn-primary btn-block btn-large">Crear</button>
+            </td>
+        </tr>
+
+
+    </tbody>
 </table>

@@ -1,0 +1,9 @@
+
+<div class="login">
+	<h1>Login</h1>
+    <form method="post">
+    	<input type="text" [(ngModel)]="userLoginInput.email" name="userName" placeholder="Email">
+        <input type="password"  [(ngModel)]="userLoginInput.password" name="password" placeholder="Password">
+        <button type="submit" class="btn btn-primary btn-block btn-large" (click)="userLogin()">Iniciar Sesión</button>
+    </form>
+</div>

@@ -11,7 +11,8 @@ export const getAllUsers = gql`
         phone,
         role,
         createdAt,
-        updatedAt
+        updatedAt,
+        deleted
     }
   }
 `;

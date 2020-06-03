@@ -1,46 +1,58 @@
-<h1>Panel de administración Tareas</h1>
-<h2 class="center">Creación de tareas</h2>
-<table>
-    <tr>
-        <th>Nombre de la tarea</th>
-        <th>Description de la tarea</th>
-        <th>Fecha de inicio</th>
-        <th>Fecha de fin</th>
-        <th>Estado</th>
-        <th>Responsable</th>
-    </tr>
-    <tr>
+<app-nav-bar></app-nav-bar>
+<h1><span class="blue">&lt;</span>Control de<span class="blue">&gt;</span> <span class="yellow">Tareas</span></h1>
+<br>
 
-        <td>
-            <!-- <label>contraseña</label> -->
-            <input type="text" [(ngModel)]="newTask.name">
-        </td>
-        <td>
-            <!-- <label>Teléfono</label> -->
-            <input class="estilotextarea" [(ngModel)]="newTask.description">
-        </td>
-        <td>
-            <!-- <label>Nick</label> -->
-            <input [(ngModel)]="newTask.startDate" type="date"/>
-        </td>
-        <td>
-            <!-- <label>email</label> -->
-            <input type="date" [(ngModel)]="newTask.endDate">
-        </td>
-        <td>
-            <!-- <label>Rol</label> -->
-            <select [(ngModel)]="newTask.state">
-                <option value="pending">pendiente
-                <option value="in_progress">En progreso
-            </select>
-        </td>
-        <td>
-            <select [(ngModel)]="newTask.userResponsibleId">
-                <option *ngFor="let user of usersActives" [(value)]="user.id" >{{user.nick}}
-            </select>
-        </td>
-        <td>
-            <button (click)="createTask()">Crear</button>
-        </td>
-    </tr>
+<table class="container">
+    <thead>
+        <tr>
+            <th><h1>Nombre de la tarea</h1></th>
+            <!-- <th><h1>Description de la tarea</h1></th> -->
+            <th><h1>Fecha de inicio</h1></th>
+            <th><h1>Fecha de fin</h1></th>
+            <th><h1>Estado</h1></th>
+            <th><h1>Responsable</h1></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+
+            <td>
+                <!-- <label>contraseña</label> -->
+                <input type="text" [(ngModel)]="newTask.name" placeholder="Nombre">
+            </td>
+            
+            <td>
+                <!-- <label>Nick</label> -->
+                <input [(ngModel)]="newTask.startDate" type="date" />
+            </td>
+            <td>
+                <!-- <label>email</label> -->
+                <input type="date" [(ngModel)]="newTask.endDate">
+            </td>
+            <td>
+                <!-- <label>Rol</label> -->
+                <select [(ngModel)]="newTask.state">
+                    <option value="pending">pendiente
+                    <option value="in_progress">En progreso
+                </select>
+            </td>
+            <td>
+                <select [(ngModel)]="newTask.userResponsibleId">
+                    <option *ngFor="let user of usersActives" [(value)]="user.id">{{user.nick}}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                <!-- <label>Teléfono</label> -->
+                <textarea name="comentarios" rows="5" cols="60" [(ngModel)]="newTask.description" placeholder="Descripción de la tarea"></textarea>
+                <!-- <input class="estilotextarea" [(ngModel)]="newTask.description"> -->
+            </td>
+        </tr><tr>
+            <td colspan="6"> <button (click)="createTask()" class="btn btn-primary btn-block btn-large">Crear</button></td>
+        </tr>
+        
+      
+    </tbody>
 </table>
+

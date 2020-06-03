@@ -1,3 +1,4 @@
+
 table, tr, td, th{
     border: 1px solid black;
     text-align: center;
@@ -12,8 +13,13 @@ h1{
 }
 
 h1 , h2, td, th, tr, table { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
-
-
+h3{
+  text-align: center;
+  color: white;
+}
+.description{
+  color: white !important;
+}
 
 /*	
 	Side Navigation Menu V2, RWD

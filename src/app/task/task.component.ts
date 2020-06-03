@@ -18,7 +18,7 @@ export class TaskComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.getUserActives();
+        this.getUsers();
     }
 
     createTask() {
@@ -33,8 +33,8 @@ export class TaskComponent implements OnInit {
 
     }
 
-    getUserActives() {
-        this.userService.getUsersActives$().subscribe(data => {
+    getUsers() {
+        this.userService.getUsers$().subscribe(data => {
             this.usersActives = data.users;
         });
     }
