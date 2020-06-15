@@ -20,7 +20,7 @@ export class UsersComponent implements OnInit {
     users = [];
     usersDeleted: any[];
     newUser = new CreateUserInputDto();
-
+    correctEmail = false;
     totalItems: number;
     page: number;
     previousPage: number;
@@ -84,7 +84,7 @@ export class UsersComponent implements OnInit {
         const deleteUserInput = new DeleteUserInputDto;
         user.deleted = true;
         deleteUserInput.idUser = user.id;
-        this.userService.deleteUser$(deleteUserInput).subscribe(data =>{ })
+        this.userService.deleteUser$(deleteUserInput).subscribe(data => { })
         this.users = [];
         this.page = 0;
         this.getUsers(this.page);
@@ -94,7 +94,7 @@ export class UsersComponent implements OnInit {
         const activeUserInput = new ActiveUserInputDto;
         user.deleted = false;
         activeUserInput.idUser = user.id;
-        this.userService.activeUser$(activeUserInput).subscribe(data =>{ })
+        this.userService.activeUser$(activeUserInput).subscribe(data => { })
         this.users = [];
         this.page = 0;
         this.getUsers(this.page);
@@ -122,17 +122,24 @@ export class UsersComponent implements OnInit {
     calcMaxOfPage() {
         this.maxOfPages = Math.round(this.totalItems / 3);
     }
-    refresh(){
+    refresh() {
         window.location.reload()
     }
 
     isAdmin() {
         const user = this.loginService.getUserLogged();
-        if(user != null){
-          if (user.role == 'role_superadmin' || user.role == 'role_superadmin') {
-          }else{
-              this.loginService.logout();
-          }
+        if (user != null) {
+            if (user.role == 'role_superadmin' || user.role == 'role_superadmin') {
+            } else {
+                this.loginService.logout();
+            }
         }
-      }
+    }
+
+
+    checkEmail(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        this.correctEmail = re.test(email);
+    }
+
 }

@@ -40,21 +40,23 @@
             <td>{{user.role}}</td>
             <td>{{user.urlImage}}</td>
             <td>
-                <button (click)="deleteUser(user)" class="btn btn-primary btn-block btn-large" *ngIf="user.deleted === 'false'">Eliminar</button>
-                <button (click)="activeUser(user)" class="btn btn-primary btn-block btn-large" *ngIf="user.deleted === 'true'">Activar</button>
+                <button (click)="deleteUser(user)" class="btn btn-primary btn-block btn-large"
+                    *ngIf="user.deleted === 'false'">Eliminar</button>
+                <button (click)="activeUser(user)" class="btn btn-primary btn-block btn-large"
+                    *ngIf="user.deleted === 'true'">Activar</button>
 
             </td>
         </tr>
         <tr>
             <td>
-                <button (click)="prevPage()"  class="btn btn-primary btn-block btn-large">Anterior</button>
+                <button (click)="prevPage()" class="btn btn-primary btn-block btn-large">Anterior</button>
 
             </td>
             <td colspan="4">
-                <button (click)="refresh()"  class="btn btn-primary btn-block btn-large">Actualizar</button>
+                <button (click)="refresh()" class="btn btn-primary btn-block btn-large">Actualizar</button>
             </td>
             <td>
-                <button (click)="nextPage()"  class="btn btn-primary btn-block btn-large">Siguiente</button>
+                <button (click)="nextPage()" class="btn btn-primary btn-block btn-large">Siguiente</button>
 
             </td>
 
@@ -103,7 +105,7 @@
                 <input type="text" [(ngModel)]="newUser.password">
             </td>
             <td>
-                <input type="email" [(ngModel)]="newUser.email">
+                <input [(ngModel)]="newUser.Email" type="text" (ngModelChange)="checkEmail($event)">
             </td>
             <td>
                 <input type="text" [(ngModel)]="newUser.phone">
@@ -121,7 +123,11 @@
         </tr>
 
         <tr>
-            <td colspan="6"> <button (click)="createUser()" class="btn btn-primary btn-block btn-large">Crear</button>
+            
+            <td colspan="6">
+                <button *ngIf="correctEmail" (click)="createUser()" class="btn btn-primary btn-block btn-large">Crear</button>
+                <button *ngIf="!correctEmail" (click)="createUser()" class="btn btn-primary btn-block btn-large" disabled>Crear</button>
+                <label *ngIf="!correctEmail" class="error-block">Introduce un email correcto</label>
             </td>
         </tr>
 
