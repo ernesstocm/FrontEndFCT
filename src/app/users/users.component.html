@@ -79,10 +79,10 @@
                 <h1>Contraseña</h1>
             </th>
             <th>
-                <h1>Telefono</h1>
+                <h1>correo_electronico</h1>
             </th>
             <th>
-                <h1>correo_electronico</h1>
+                <h1>Telefono</h1>
             </th>
             <th>
                 <h1>Rol</h1>
@@ -100,10 +100,10 @@
             </td>
 
             <td>
-                <input type="email" [(ngModel)]="newUser.email">
+                <input type="text" [(ngModel)]="newUser.password">
             </td>
             <td>
-                <input type="text" [(ngModel)]="newUser.password">
+                <input type="email" [(ngModel)]="newUser.email">
             </td>
             <td>
                 <input type="text" [(ngModel)]="newUser.phone">
@@ -121,7 +121,7 @@
         </tr>
 
         <tr>
-            <td colspan="6"> <button (click)="createTask()" class="btn btn-primary btn-block btn-large">Crear</button>
+            <td colspan="6"> <button (click)="createUser()" class="btn btn-primary btn-block btn-large">Crear</button>
             </td>
         </tr>
 

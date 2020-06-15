@@ -35,22 +35,18 @@ export class LoginComponent implements OnInit {
     this.userService.login$(this.userLoginInput).subscribe(data => {
       if (data.result == true) {
         localStorage.setItem('currentUser', JSON.stringify(data.user));
-        this.refreshNavBar.emit();
         this.router.navigate(['/dashboard']);
       } else {
-        this.error = 'error al iniciar sesión, comprueba los datos'
-        console.log(data.result)
+        this.error = 'Error al iniciar sesión, comprueba los datos.'
       }
     })
   }
 
   getUserCookie() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(this.user)
   }
   logout() {
     let result = this.loginService.logout();
-    console.log(result)
   }
 
 }

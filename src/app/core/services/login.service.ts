@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { User } from '../models/objects/user/user';
 import { Apollo } from 'apollo-angular';
@@ -10,6 +11,8 @@ export class LoginService {
     constructor(
         private readonly apollo: Apollo,
         private cookieService: CookieService,
+        private router: Router,
+
 
     ) { }
 
@@ -31,6 +34,7 @@ export class LoginService {
     }
     logout() {
         localStorage.removeItem('currentUser');
+        this.router.navigate(['']);
         return true;
     }
 }

@@ -34,14 +34,10 @@
                     <option value="in_progress">En progreso
                     <option value="paused">Pausada
                     <option value="cancelled">Cancelada
+                    <option value="finished">Finalizada
                 </select>
             </td>
         </tr>
-        <!-- <tr>
-            <td colspan="3">
-            </td>
-            
-        </tr> -->
 
         <tr>
             <td>
@@ -49,7 +45,8 @@
 
             </td>
             <td>
-                <button  class="btn btn-success btn-block btn-large" (click)="saveStateTask(task)">Guardar</button>
+                <button  class="btn btn-success btn-block btn-large" (click)="editTask(task)">editar</button>
+
 
             </td>
             <td>
@@ -58,6 +55,14 @@
             </td>
 
         </tr>
+
+        <tr>
+            <td colspan="3">
+                <button  class="btn btn-success btn-block btn-large" (click)="saveStateTask(task)">Guardar</button>
+
+            </td>
+        </tr>
     </tbody>
 </table>
 <br>
+

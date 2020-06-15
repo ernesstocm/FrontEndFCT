@@ -12,6 +12,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EditTaskComponent } from './task/edit-task/edit-task.component';
+import { StadisticComponent } from './stadistic/stadistic.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +22,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     NavBarComponent,
     LoginComponent,
     DashboardComponent,
+    EditTaskComponent,
+    StadisticComponent,
     
   ],
   imports: [

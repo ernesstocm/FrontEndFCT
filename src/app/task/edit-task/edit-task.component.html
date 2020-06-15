@@ -1,0 +1,49 @@
+<app-nav-bar></app-nav-bar>
+<h1><span class="blue">&lt;</span>Actualización de<span class="blue">&gt;</span> <span class="yellow">Tareas</span></h1>
+<br>
+
+<table class="container" *ngIf="task">
+    <thead>
+        <tr>
+            <th>
+                <h1>Nombre de la tarea<br><span class="textGrey"> {{task.name}}</span></h1>
+            </th>
+            <!-- <th><h1>Description de la tarea</h1></th> -->
+            <th>
+                <h1>Fecha de inicio<br><span class="textGrey"> {{task.startDate |  date:'dd/MM/yyyy'}}</span></h1>
+            </th>
+            <th>
+                <h1>Fecha de fin <br><span class="textGrey"> {{task.endDate |  date:'dd/MM/yyyy'}}</span></h1>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <!-- <label>contraseña</label> -->
+                <input type="text" [(ngModel)]="updateTaskInput.name" placeholder="{{task.name}}" placeholder="Nombre">
+            </td>
+
+            <td>
+                <!-- <label>Nick</label> -->
+                <input [(ngModel)]="updateTaskInput.startDate" type="date" />
+            </td>
+            <td>
+                <!-- <label>email</label> -->
+                <input type="date" [(ngModel)]="updateTaskInput.endDate">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                <!-- <label>Teléfono</label> -->
+                <textarea name="comentarios" rows="5" cols="60" [(ngModel)]="updateTaskInput.description"
+                    placeholder="Descripción de la tarea"></textarea>
+                <!-- <input class="estilotextarea" [(ngModel)]="newTask.description"> -->
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6"> <button (click)="updateTask()"
+                    class="btn btn-primary btn-block btn-large">Actualizar</button></td>
+        </tr>
+    </tbody>
+</table>

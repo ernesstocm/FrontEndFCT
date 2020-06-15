@@ -1,3 +1,5 @@
+import { NavBarComponent } from './../nav-bar/nav-bar.component';
+import { Router } from '@angular/router';
 import { updateTask } from './../graphql/task/mutations/mutations';
 import { UpdateTaskInputDto } from './../core/models/objects/task/update-task.input.dto';
 import { GetAllTaskInputDto } from './../core/models/objects/task/get-all-task.input.dto';
@@ -19,10 +21,12 @@ export class DashboardComponent implements OnInit {
   previousPage: number;
   showPagination: boolean;
   maxOfPages: number;
+  updateTask = new UpdateTaskInputDto;
 
   constructor(
     private taskService: TaskService,
     private loginService: LoginService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -51,18 +55,18 @@ export class DashboardComponent implements OnInit {
   }
 
   fixState() {
-      if (this.tasks[0].state == 'in_progress') {
-        this.tasks[0].state = 'En progreso';
-      }
-      if (this.tasks[0].state == 'pending') {
-        this.tasks[0].state = 'Pendiente';
-      }
-      if (this.tasks[0].state == 'paused') {
-        this.tasks[0].state = 'Pausada';
-      }
-      if (this.tasks[0].state == 'cancelled') {
-        this.tasks[0].state = 'Cancelada';
-      }
+    if (this.tasks[0].state == 'in_progress') {
+      this.tasks[0].state = 'En progreso';
+    }
+    if (this.tasks[0].state == 'pending') {
+      this.tasks[0].state = 'Pendiente';
+    }
+    if (this.tasks[0].state == 'paused') {
+      this.tasks[0].state = 'Pausada';
+    }
+    if (this.tasks[0].state == 'cancelled') {
+      this.tasks[0].state = 'Cancelada';
+    }
   }
 
 
@@ -88,12 +92,11 @@ export class DashboardComponent implements OnInit {
   calcMaxOfPage(allItems) {
     this.maxOfPages = allItems;
     this.maxOfPages--;
-    // console.log(this.maxOfPages)
   }
 
   saveStateTask(task) {
     const updateTask = new UpdateTaskInputDto();
-    if(this.newState != undefined){
+    if (this.newState != undefined) {
       updateTask.id = task.id;
       updateTask.name = task.name;
       updateTask.description = task.description;
@@ -107,4 +110,15 @@ export class DashboardComponent implements OnInit {
       })
     }
   }
+
+  goToCreateTarea() {
+    this.router.navigate(['creacion/tareas']);
+  }
+
+  editTask(task){
+    localStorage.removeItem('tareaToEdit');
+    localStorage.setItem('tareaToEdit', JSON.stringify(task));
+    this.router.navigate(['administración/tareas']);
+  }
+
 }

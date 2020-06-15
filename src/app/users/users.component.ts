@@ -1,3 +1,4 @@
+import { LoginService } from './../core/services/login.service';
 import { ActiveUserInputDto } from './../core/models/objects/user/active-user.input.dto';
 import { DeleteUserInputDto } from './../core/models/objects/user/delete-user.input.dto';
 import { CreateUserInputDto } from './../core/models/objects/user/create-user.input.dto';
@@ -29,11 +30,12 @@ export class UsersComponent implements OnInit {
         private apollo: Apollo,
         private userService: UserService,
         private router: Router,
+        private loginService: LoginService,
 
     ) { }
 
     ngOnInit() {
-
+        this.isAdmin();
         this.getUsers(this.page);
         // this.createUser();
     }
@@ -71,13 +73,11 @@ export class UsersComponent implements OnInit {
     // }
 
     createUser() {
-        console.log(this.newUser)
         this.userService.createUser$(this.newUser).subscribe(result => {
-            console.log(result)
         }, error => {
             console.log('error');
         })
-        this.getUsers(1);
+        this.refresh();
     }
 
     deleteUser(user) {
@@ -105,7 +105,6 @@ export class UsersComponent implements OnInit {
         if (this.page < this.maxOfPages) {
             this.page++;
         }
-        // console.log(this.page, this.previousPage)
         this.users = [];
         this.getUsers(this.page);
     }
@@ -115,7 +114,6 @@ export class UsersComponent implements OnInit {
         if (this.previousPage > 0) {
             this.previousPage--;
         }
-        // console.log(this.page, this.previousPage)
         this.users = [];
         this.getUsers(this.page);
 
@@ -127,4 +125,14 @@ export class UsersComponent implements OnInit {
     refresh(){
         window.location.reload()
     }
+
+    isAdmin() {
+        const user = this.loginService.getUserLogged();
+        if(user != null){
+          if (user.role == 'role_superadmin' || user.role == 'role_superadmin') {
+          }else{
+              this.loginService.logout();
+          }
+        }
+      }
 }

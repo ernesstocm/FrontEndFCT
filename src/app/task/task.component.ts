@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./task.component.scss']
 })
 export class TaskComponent implements OnInit {
-
+    editTask: any;
     newTask = new CreateTaskInputDto();
     usersActives: any[];
     constructor(
@@ -24,13 +24,10 @@ export class TaskComponent implements OnInit {
     createTask() {
         this.newTask.startDate = new Date(this.newTask.startDate);
         this.newTask.endDate = new Date(this.newTask.endDate);
-        console.log(this.newTask)
         this.taskService.createTask$(this.newTask).subscribe(result => {
-            console.log(result)
         }, error => {
-            console.log('error')
         })
-
+        this.newTask = new CreateTaskInputDto();
     }
 
     getUsers() {
@@ -38,4 +35,6 @@ export class TaskComponent implements OnInit {
             this.usersActives = data.users;
         });
     }
+
+
 }
